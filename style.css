@@ -1,0 +1,84 @@
+.bottomContainer[data-v-4155b086] {
+    width: 100vw;
+    height: 200px;
+    position: relative;
+    z-index: -1;
+    opacity: .37;
+}
+
+/* 波浪 SVG 的样式 */
+.waves[data-v-34463044] {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px;
+    min-height: 100px;
+    max-height: 150px;
+}
+
+/* 中间内容区域，可根据需求自定义背景、布局等 */
+.content[data-v-34463044] {
+    position: relative;
+    height: 20vh;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* 示例链接的样式 */
+.content a[data-v-34463044] {
+    margin: 0 5px;
+    font-size: 12px;
+    color: #333;
+    text-decoration: none; /* 如需去掉下划线 */
+}
+
+.content a[data-v-34463044]:hover {
+    color: #000;
+}
+
+/* 四层波浪动画设置 */
+.parallax > use[data-v-34463044] {
+    animation: move-forever-34463044 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+/* 每层波浪的起始延迟与动画时长，可调节形成错落感 */
+.parallax > use[data-v-34463044]:first-child {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+.parallax > use[data-v-34463044]:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+.parallax > use[data-v-34463044]:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+.parallax > use[data-v-34463044]:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+/* 定义关键帧：左右平移循环 */
+@keyframes move-forever-34463044 {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    to {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/* 响应式：窄屏幕下调整波浪与内容高度 */
+@media (max-width: 768px) {
+    .waves[data-v-34463044] {
+        height: 40px;
+        min-height: 40px;
+    }
+    .content[data-v-34463044] {
+        height: 30vh;
+    }
+    h1[data-v-34463044] {
+        font-size: 24px;
+    }
+}

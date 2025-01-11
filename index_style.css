@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('sakura.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    text-align: center;
+    overflow-x: hidden;
+}
+.container {
+    padding: 20px;
+}
+.header {
+    position: relative;
+    padding: 20px 0;
+}
+.header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.header .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.header .title {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #FF69B4;
+}
+.countdown {
+    margin: 30px 0;
+    font-size: 1.2em;
+    color: #FF1493;
+}
+.navigation {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px auto;
+    width: 80%;
+}
+.nav-item {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.nav-item:hover {
+    transform: translateY(-5px);
+}
+.nav-item img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+.nav-item a {
+    text-decoration: none;
+    font-size: 1em;
+    color: #333;
+}
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* 心跳动画 */
+.heart {
+    font-size: 2em;
+    color: #FF1493;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* 外层容器：控制波浪所处位置和背景等 */
+.waves-container {
+    position: relative;
+    width: 100%;
+    height: 150px;             /* 视需求可调 */
+    overflow: hidden;
+    background: linear-gradient(to bottom, #664545, #af9191);
+  }
+  
+  /* 通用波浪样式 */
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;              /* 让波浪宽度是容器2倍，用于无缝平移 */
+    height: 100%;
+    transform: translateX(0);
+    animation: wave-move 8s linear infinite;
+    z-index: 1;               /* 所有波浪初始放在同一层级，后续再区分 */
+  }
+  
+  /* 最底层波浪：z-index最小、延迟0、不透明度最高 */
+  .wave1 {
+    z-index: 1;               /* 最底 */
+    animation-delay: 0s;
+    /* 若想让它“位置更深”可以让它bottom: -10px;等做微调 */
+  }
+  
+  /* 第二条波浪：稍作延时，让它与第一条错开 */
+  .wave2 {
+    z-index: 2;
+    animation-delay: -2s;     /* 让它的相位比wave1超前2秒 */
+    /* 也可调整bottom/或其他自定义 */
+  }
+  
+  /* 第三条波浪 */
+  .wave3 {
+    z-index: 3;
+    animation-delay: -4s;
+  }
+  
+  /* 第四条波浪：最上层、最透明 */
+  .wave4 {
+    z-index: 4;
+    animation-delay: -6s;
+  }
+  
+  /* 核心动画：从0%移动到-100%，实现无缝平移 */
+  @keyframes wave-move {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+
+
+
+
+
