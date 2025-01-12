@@ -3,13 +3,16 @@ body {
     font-family: 'Arial', sans-serif;
     background: url('sakura.gif') no-repeat center center fixed;
     background-size: cover;
-    color: #333;
+    color: #b98c8c;
     text-align: center;
     overflow-x: hidden;
+    background-color: rgba(207, 114, 114, 0.1);
 }
 .container {
     padding: 20px;
 }
+
+/* 头像，头像下方文字和倒计时排版 */
 .header {
     position: relative;
     padding: 20px 0;
@@ -18,7 +21,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid  rgba(207, 114, 114, 0.5);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 .header .avatar {
@@ -37,38 +40,7 @@ body {
     font-size: 1.2em;
     color: #FF1493;
 }
-.navigation {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 20px auto;
-    width: 80%;
-}
-.nav-item {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-.nav-item:hover {
-    transform: translateY(-5px);
-}
-.nav-item img {
-    width: 50px;
-    margin-bottom: 10px;
-}
-.nav-item a {
-    text-decoration: none;
-    font-size: 1em;
-    color: #333;
-}
-.footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: #666;
-}
+
 
 /* 心跳动画 */
 .heart {
@@ -86,57 +58,112 @@ body {
     }
 }
 
-/* 外层容器：控制波浪所处位置和背景等 */
-.waves-container {
+/* 波浪动画 */
+.waves[data-v-34463044] {
     position: relative;
     width: 100%;
-    height: 150px;             /* 视需求可调 */
-    overflow: hidden;
-    background: linear-gradient(to bottom, #664545, #af9191);
-  }
-  
-  /* 通用波浪样式 */
-  .wave {
-    position: absolute;
-    bottom: 0;
-    width: 200%;              /* 让波浪宽度是容器2倍，用于无缝平移 */
-    height: 100%;
-    transform: translateX(0);
-    animation: wave-move 8s linear infinite;
-    z-index: 1;               /* 所有波浪初始放在同一层级，后续再区分 */
-  }
-  
-  /* 最底层波浪：z-index最小、延迟0、不透明度最高 */
-  .wave1 {
-    z-index: 1;               /* 最底 */
-    animation-delay: 0s;
-    /* 若想让它“位置更深”可以让它bottom: -10px;等做微调 */
-  }
-  
-  /* 第二条波浪：稍作延时，让它与第一条错开 */
-  .wave2 {
-    z-index: 2;
-    animation-delay: -2s;     /* 让它的相位比wave1超前2秒 */
-    /* 也可调整bottom/或其他自定义 */
-  }
-  
-  /* 第三条波浪 */
-  .wave3 {
-    z-index: 3;
+    height: 15vh;
+    margin-bottom: -7px;
+    min-height: 100px;
+    max-height: 150px
+}
+
+.parallax>use[data-v-34463044] {
+    animation: move-forever-34463044 25s cubic-bezier(.55,.5,.45,.5) infinite
+}
+
+.parallax>use[data-v-34463044]:first-child {
+    animation-delay: -2s;
+    animation-duration: 7s
+}
+
+.parallax>use[data-v-34463044]:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s
+}
+
+.parallax>use[data-v-34463044]:nth-child(3) {
     animation-delay: -4s;
-  }
-  
-  /* 第四条波浪：最上层、最透明 */
-  .wave4 {
-    z-index: 4;
-    animation-delay: -6s;
-  }
-  
-  /* 核心动画：从0%移动到-100%，实现无缝平移 */
-  @keyframes wave-move {
-    0%   { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
-  }
+    animation-duration: 13s
+}
+
+.parallax>use[data-v-34463044]:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s
+}
+
+@keyframes move-forever-34463044 {
+    0% {
+        transform: translate3d(-90px,0,0)
+    }
+
+    to {
+        transform: translate3d(85px,0,0)
+    }
+}
+
+/* menu */
+.menu {
+    margin: 20px auto;
+    width: 70%;
+    display: flex
+;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.lo-card {
+
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .5s;
+    background-size: 200% auto;
+    color: #fff;
+    box-shadow: 0 0 20px #bb8383;
+    border-radius: 10px;
+    display: flex
+;
+}
+
+
+.lo-card svg {
+    width: 65px;
+    height: 65px;
+    transition: transform 0.3s ease; /* SVG 平滑缩放 */
+}
+
+.lo-card:hover svg {
+    transform: scale(1.2); /* 鼠标移入时放大 SVG */
+}
+
+.svg-icon {
+    width: 65px;
+    height: 65px;
+    vertical-align: middle;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.flex-row {
+    display: flex
+;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.hover-cl {
+    cursor: pointer;
+    color: #000;
+    letter-spacing: 2px;
+}
   
 
 
